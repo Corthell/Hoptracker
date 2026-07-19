@@ -1,0 +1,15 @@
+{
+  "name": "hoptracker",
+  "version": "1.0.0",
+  "description": "HopTracker — animowana wizualizacja trasy pakietów (traceroute) na mapie świata",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "os": [
+    "win32"
+  ]
+}

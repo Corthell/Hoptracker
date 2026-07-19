@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HopTracker — your signal's journey across the world</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 40 40%22><circle cx=%2220%22 cy=%2220%22 r=%2215%22 fill=%22none%22 stroke=%22%2322d3ee%22 stroke-width=%222.5%22/><path d=%22M8 27 Q20 8 32 15%22 fill=%22none%22 stroke=%22%2367e8f9%22 stroke-width=%222.5%22 stroke-linecap=%22round%22/><circle cx=%2232%22 cy=%2215%22 r=%223.5%22 fill=%22%2322d3ee%22/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <span class="logo" aria-hidden="true">
+        <svg viewBox="0 0 40 40" width="34" height="34">
+          <defs>
+            <linearGradient id="logo-grad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#22d3ee"/>
+              <stop offset="1" stop-color="#3b82f6"/>
+            </linearGradient>
+          </defs>
+          <circle cx="20" cy="20" r="15" fill="none" stroke="url(#logo-grad)" stroke-width="2"/>
+          <ellipse cx="20" cy="20" rx="6.4" ry="15" fill="none" stroke="url(#logo-grad)" stroke-width="1.3" opacity=".55"/>
+          <line x1="5" y1="20" x2="35" y2="20" stroke="url(#logo-grad)" stroke-width="1.3" opacity=".55"/>
+          <path d="M8 27 Q20 8 32 15" fill="none" stroke="#67e8f9" stroke-width="2.2"
+                stroke-linecap="round" stroke-dasharray="0.5 4.5"/>
+          <circle cx="8" cy="27" r="2.4" fill="#4ade80"/>
+          <circle cx="32" cy="15" r="3.4" fill="#22d3ee"/>
+        </svg>
+      </span>
+      <h1 class="wordmark">Hop<span>Tracker</span></h1>
+    </div>
+
+    <form id="trace-form" autocomplete="off">
+      <div class="input-wrap">
+        <input id="url-input" type="text" placeholder="e.g. google.com or https://github.com"
+               aria-label="Website address to trace"
+               data-i18n-placeholder="input_placeholder" data-i18n-aria-label="input_aria"
+               spellcheck="false" required autofocus>
+        <button id="clear-btn" type="button" aria-label="Clear field" data-i18n-aria-label="clear_aria" hidden>&times;</button>
+      </div>
+      <button id="trace-btn" type="submit">Let's hop!</button>
+      <button id="sound-btn" type="button" aria-label="Toggle sounds" data-i18n-aria-label="sound_toggle_aria">🔊</button>
+      <button id="lang-btn" type="button" aria-label="Change language"></button>
+    </form>
+
+    <div id="visitors" title="Total visits" data-i18n-title="visitors_title">
+      <span id="visitor-count">—</span> <span data-i18n="visitors_label">visitors</span>
+    </div>
+
+    <div id="status" role="status" aria-live="polite">Enter an address — or tap a yellow server on the map — and watch how your request travels the world.</div>
+  </header>
+
+  <main>
+    <div id="map" role="region" aria-label="World map with the packet route" data-i18n-aria-label="map_aria"></div>
+    <aside id="sidebar" aria-label="Route hops list" data-i18n-aria-label="sidebar_aria">
+      <h2><span data-i18n="hops_title">Hops</span> <span id="hop-count"></span></h2>
+      <ol id="hop-list"></ol>
+    </aside>
+  </main>
+
+  <div id="legend">
+    <span><i class="dot origin"></i> <span data-i18n="legend_you">You</span></span>
+    <span><i class="dot hop"></i> <span data-i18n="legend_hop">intermediate server</span></span>
+    <span><i class="dot target"></i> <span data-i18n="legend_target">target</span></span>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="app.js"></script>
+</body>
+</html>

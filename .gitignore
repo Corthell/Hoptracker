@@ -1,0 +1,20 @@
+# Stan runtime — licznik odwiedzin tworzony automatycznie przez serwer
+/data/visits.json
+
+# Zależności (projekt ma zero, ale na wszelki wypadek)
+/node_modules/
+
+# Logi
+*.log
+npm-debug.log*
+
+# Śmieci systemu / edytora
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Zmienne środowiskowe
+.env
+.env.*
